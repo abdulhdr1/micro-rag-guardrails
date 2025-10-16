@@ -1,0 +1,38 @@
+{
+  "name": "cogna-rag",
+  "version": "1.0.0",
+  "description": "Micro-RAG service with guardrails for educational domain Q&A",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "build": "bun build src/index.ts --outdir ./dist --target bun",
+    "test": "bun test",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "keywords": ["rag", "llm", "ai", "guardrails"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "hono": "^4.0.0",
+    "dotenv": "^16.4.1",
+    "openai": "^4.28.0",
+    "drizzle-orm": "^0.33.0",
+    "postgres": "^3.4.4",
+    "tiktoken": "^1.0.13",
+    "zod": "^3.22.4",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.0",
+    "@biomejs/biome": "^1.9.0",
+    "drizzle-kit": "^0.24.0",
+    "typescript": "^5.3.3"
+  }
+}

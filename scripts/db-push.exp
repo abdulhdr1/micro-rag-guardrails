@@ -1,0 +1,15 @@
+#!/usr/bin/expect -f
+
+set timeout 30
+spawn bun run db:push
+
+expect {
+    "Yes, I want to execute all statements" {
+        send "\033\[B\r"
+        expect eof
+    }
+    timeout {
+        puts "Timeout waiting for prompt"
+        exit 1
+    }
+}
