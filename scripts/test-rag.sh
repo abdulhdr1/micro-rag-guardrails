@@ -1,11 +1,22 @@
 #!/bin/bash
 
 # Script para testar o sistema RAG
+# Para tornar este script executável, rode: chmod +x scripts/test-rag.sh
 
 BASE_URL="http://localhost:3000"
 
 echo "🧪 Testando Sistema RAG com Guardrails"
 echo "========================================"
+echo ""
+
+# Verificar se o servidor está rodando
+echo "🔍 Verificando se o servidor está rodando..."
+if ! curl -s -f "${BASE_URL}/health" > /dev/null 2>&1; then
+  echo "❌ Erro: Servidor não está respondendo em ${BASE_URL}"
+  echo "   Por favor, inicie o servidor com: bun run dev"
+  exit 1
+fi
+echo "✅ Servidor está rodando!"
 echo ""
 
 # Teste 1: Health check

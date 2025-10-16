@@ -164,8 +164,17 @@ curl -X POST http://localhost:3000/api/ask \
 ### Script de Teste
 
 ```bash
+# Primeiro, tornar o script executável
+chmod +x scripts/test-rag.sh
+
+# Garantir que o servidor está rodando
+bun run dev
+
+# Em outro terminal, executar os testes
 ./scripts/test-rag.sh
 ```
+
+O script automaticamente verifica se o servidor está rodando antes de executar os testes. Se o servidor não estiver disponível, o script exibirá uma mensagem de erro e encerrará.
 
 ### Testes Unitários
 
