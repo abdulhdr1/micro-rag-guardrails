@@ -1,7 +1,21 @@
 #!/usr/bin/expect -f
 
 set timeout 30
-spawn bun run db:push
+
+# First, initialize pgvector
+puts "Initializing pgvector extension..."
+spawn bun run db:init-vector
+expect eof
+catch wait result
+set init_exit_code [lindex $result 3]
+
+if {$init_exit_code != 0} {
+    puts "Failed to initialize pgvector"
+    exit 1
+}
+
+# Then run db:push
+spawn drizzle-kit push
 
 expect {
     "Yes, I want to execute all statements" {

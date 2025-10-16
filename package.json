@@ -13,10 +13,16 @@
     "format": "biome format --write .",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:push": "drizzle-kit push",
+    "db:init-vector": "bun scripts/init-pgvector.ts",
+    "db:push": "bun run db:init-vector && drizzle-kit push",
     "db:studio": "drizzle-kit studio"
   },
-  "keywords": ["rag", "llm", "ai", "guardrails"],
+  "keywords": [
+    "rag",
+    "llm",
+    "ai",
+    "guardrails"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
